@@ -1,0 +1,38 @@
+# GaCDCP
+## The run_analysis.R script does the job by dividing it into several steps.
+
+## 1. First, the data is downloaded and unpacked in a folder called UCI HAR Dataset.
+
+## 2. In the next step, data is assigned to variables.
+  'features' <- features.txt
+  'activities' <- activity_labels.txt
+  'subject_test' <- test/subject_test.txt
+  'x_test' <- test/X_test.txt
+  'y_test' <- test/y_test.txt
+  'subject_train' <- test/subject_train.txt
+  'x_train' <- test/X_train.txt
+  'y_train' <- test/y_train.txt
+  
+## 3. Then the data sets are combined into one data set.
+  'X' - created by merging 'x_train' and 'x_test' by rbind() function
+  'Y' - created by merging 'y_train' and 'y_test' by rbind() function
+  'subject' - created by merging subject_train and subject_test by rbind() function
+  'merged' - created by merging 'Subject', 'Y' and 'X' uby cbind() function
+
+## 4. The next step is to calculate the mean and standard deviation.
+  'tity' - created by subsetting merged, (selected only: subject, code and the measurements columns) and calculated the mean and standard deviation
+
+## 5. Change the names in the dataset to descriptive
+  In 'tidy' dataset replaced column names with descriptive
+
+## 6. Marks a data set with descriptive variable names
+  code column in 'tidy' renamed into activities
+  'Acc' name replaced by 'Accelerometer'
+  'Gyro' name replaced by 'Gyroscope'
+  'BodyBody' name replaced by 'Body'
+  'Mag' name replaced by 'Magnitude'
+  name start with character 'f' replaced by 'Frequency'
+  name start with character 't' replaced by 'Time'
+
+## 7. Saving the Data Frame to a text file
+  Export 'ready' into 'ready.txt'
